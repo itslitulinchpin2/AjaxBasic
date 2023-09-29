@@ -13,27 +13,28 @@
   ">
   <ol>
     <li><a onclick="
-      document.querySelector('article').innerHTML=`
-      <h2>HTML</h2> HTML is ...
-      `;
-      
+      fetchPage('html')
       ">HTML</a></li>
+
     <li><a onclick="
-      document.querySelector('article').innerHTML=`
-      <h2>CSS</h2> CSS is ...
-      `;
-      
+      fetchPage('css')
       ">CSS</a></li>
-    <li><a onclick="
-      document.querySelector('article').innerHTML=`
-      <h2>JavaScript</h2> JavaScript is ...
-      `;
       
+    <li><a onclick="
+      fetchPage('javascript')
       ">JavaScript</a></li>
   </ol>
   <article>
 
   </article>
-  </p>
+  <script>
+    function fetchPage(name){
+      fetch(name).then(function(response){
+            response.text().then(function(text){
+                document.querySelector('article').innerHTML=text;
+            })
+        })
+    }
+  </script>
 </body>
 </html>
